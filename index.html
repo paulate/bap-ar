@@ -6,11 +6,58 @@
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
   </head>
   <body>
-    <a-scene mindar-image="imageTargetSrc: targets/p1-redact.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    <a-scene mindar-image="imageTargetSrc: targets/targets.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <a-assets>
+        <img id="img01" src="img/img-01.png" />
+        <img id="img02" src="img/img-02.png" />
+        <img id="img03" src="img/img-03.png" />
+        <img id="img04" src="img/img-04.png" />
+        <img id="img05" src="img/img-05.png" />
+        <img id="img06" src="img/img-06.png" />
+        <img id="img07" src="img/img-07.png" />
+        <img id="img08" src="img/img-08.png" />
+        <img id="img09" src="img/img-09.png" />
+        <img id="img10" src="img/img-10.png" />
+        <img id="img11" src="img/img-11.png" />
+
+        
+      </a-assets>
+
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
       <a-entity mindar-image-target="targetIndex: 0">
-        <a-plane color="blue" opaciy="0.5" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+        <a-plane src="#img01" position="0 0 0" height="1.294" width="1" rotation="0 0 0"></a-plane>
       </a-entity>
+      <a-entity mindar-image-target="targetIndex: 1">
+        <a-plane src="#img02" opaciy="0.5" position="0 0 0" height="1.294" width="1" rotation="0 0 0"></a-plane>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 2">
+        <a-plane src="#img03" opaciy="0.5" position="0 0 0" height="1.294" width="1" rotation="0 0 0"></a-plane>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 3">
+        <a-plane src="#img04" opaciy="0.5" position="0 0 0" height="1.294" width="1" rotation="0 0 0"></a-plane>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 4">
+        <a-plane src="#img05" opaciy="0.5" position="0 0 0" height="1.294" width="1" rotation="0 0 0"></a-plane>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 5">
+        <a-plane src="#img06" opaciy="0.5" position="0 0 0" height="1.294" width="1" rotation="0 0 0"></a-plane>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 6">
+        <a-plane src="#img07" opaciy="0.5" position="0 0 0" height="1.294" width="1" rotation="0 0 0"></a-plane>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 7">
+        <a-plane src="#img08" opaciy="0.5" position="0 0 0" height="1.294" width="1" rotation="0 0 0"></a-plane>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 8">
+        <a-plane src="#img09" opaciy="0.5" position="0 0 0" height="1.294" width="1" rotation="0 0 0"></a-plane>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 9">
+        <a-plane src="#img10" opaciy="0.5" position="0 0 0" height="1.294" width="1" rotation="0 0 0"></a-plane>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 10">
+        <a-plane src="#img11" opaciy="0.5" position="0 0 0" height="1.294" width="1" rotation="0 0 0"></a-plane>
+      </a-entity>
+
     </a-scene>
   </body>
 </html>
