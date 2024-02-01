@@ -2,14 +2,132 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v7.0.0/dist/aframe-extras.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
- 
+    <style>
+
+     #example-scanning-overlay {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          background: transparent;
+          z-index: 2;
+      }
+      @media (min-aspect-ratio: 1/1) {
+        #example-scanning-overlay .inner {
+          width: 32.35vh;
+          height: 50vh;
+	      }
+      }
+      @media (max-aspect-ratio: 1/1) {
+        #example-scanning-overlay .inner {
+          width: 51.76vw;
+          height: 80vw;
+	      }
+      }
+
+      #example-scanning-overlay .inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        background:
+          linear-gradient(to right, white 10px, transparent 10px) 0 0,
+          linear-gradient(to right, white 10px, transparent 10px) 0 100%,
+          linear-gradient(to left, white 10px, transparent 10px) 100% 0,
+          linear-gradient(to left, white 10px, transparent 10px) 100% 100%,
+          linear-gradient(to bottom, white 10px, transparent 10px) 0 0,
+          linear-gradient(to bottom, white 10px, transparent 10px) 100% 0,
+          linear-gradient(to top, white 10px, transparent 10px) 0 100%,
+          linear-gradient(to top, white 10px, transparent 10px) 100% 100%;
+        background-repeat: no-repeat;
+        background-size: 40px 40px;
+      }
+
+      #example-scanning-overlay.hidden {
+	      display: none;
+      }
+
+      #example-scanning-overlay img {
+        opacity: 0.6;
+        width: 90%;
+        align-self: center;
+      }
+
+      #example-scanning-overlay .inner .scanline {
+	position: absolute;
+	width: 100%;
+	height: 10px;
+	background: white;
+	animation: move 3s linear infinite;
+      }
+      @keyframes move {
+	0%, 100% { top: 0% }
+	50% { top: calc(100% - 10px) }
+      }
+      #found-overlay.hidden {
+          display:none;
+      }
+      #found-overlay {
+      padding:10px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+gap: 5px;
+border-radius: 10px;
+background: rgba(0, 0, 0, 0.50);
+      }
+
+      .footer {
+        display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 20px;
+	background: transparent;
+	z-index: 2;
+      }
+     </style>
   </head>
   <body>
-
-    <a-scene mindar-image="imageTargetSrc: targets/matematika.mind;missTolerance: 10" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    <div id="example-scanning-overlay" class="">
+      <div class="inner">
+        <img src="img/BAP-p2-cropped-01.jpg">
+	      <div class="scanline"></div>
+      </div>
+    </div>
+    <div class="footer">
+    <div id="found-overlay" class="hidden">
+      
+        <div style="text-align: center; color: white; font-family: Special Elite; font-weight: 400; word-wrap: break-word;">Read original</div>
+      
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+          <g clip-path="url(#clip0_23_23)">
+          <path d="M11.3827 2.0323L6.16489 7.2501L7.24989 8.3351L12.4677 3.1173V6.73378H14V0.5H7.76621V2.0323H11.3827ZM10.1344 8.26608V12.967H3.86633V2.0323H6.23391V0.5H2.33347V14.5H11.6668V8.26622L10.1344 8.26608Z" fill="white"/>
+          </g>
+          <defs>
+          <clipPath id="clip0_23_23">
+          <rect width="14" height="14" fill="white" transform="translate(0 0.5)"/>
+          </clipPath>
+          </defs>
+          </svg>
+      </div>
+    </div>
+  </div>
+    <a-scene mindar-image="imageTargetSrc: targets/matematika.mind;missTolerance: 10;uiScanning:#example-scanning-overlay" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets>
         <a-asset-item id="bap-p2" src="img/bap-p2-1_30.gltf"></a-asset-item>
         <a-asset-item id="bap-p3" src="img/bap-p3-1_30.gltf"></a-asset-item>
@@ -22,9 +140,9 @@
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-    
+      <!-- <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: ${customFields.libVersion}; objects: .clickable"></a-camera> -->
       <a-entity id="example-target" mindar-image-target="targetIndex: 0"> <!--page 9-->
-          <a-gltf-model id="example-model" rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p9" animation-mixer="loop:once;timeScale:0">
+          <a-gltf-model class="clickable" id="example-model" rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p9" animation-mixer="loop:once;timeScale:0">
           <!-- <a-text id="text-target" value="heyo" color="black" align="center" width="2" position="0 -.1 0"></a-text> -->
       </a-entity>
     
@@ -33,13 +151,16 @@
       const exampleTarget = document.querySelector('#example-target');
       const textTarget = document.querySelector('#text-target');
       let exampleModel = document.querySelector('#example-model');
+      const foundOverlay = document.querySelector('#found-overlay');
       exampleTarget.addEventListener("targetFound", event => {
         // exampleTarget.appendChild(exampleModel);
         // textTarget.setAttribute("value", "clcik meee");
         // console.log("target found")
+        foundOverlay.classList.remove("hidden");
         exampleModel.setAttribute("animation-mixer", "timeScale:1");
       });
       exampleTarget.addEventListener("targetLost", event => {
+        foundOverlay.classList.add("hidden");
         // textTarget.setAttribute("value", "clcik meee");
         console.log("target lost")
         // exampleModel.setAttribute("animation-mixer", );
@@ -56,58 +177,27 @@
         
       });
 
-      var prevData = "";
-    var scene = document.querySelector('a-scene');  
-    var playOnce = false; 
+    //   var prevData = "";
+    // var scene = document.querySelector('a-scene');  
+    // var playOnce = false; 
  
    
     
         
 
-    var bot = document.querySelector('#example-model');
-    var scene = document.querySelector('a-scene');
-    scene.addEventListener('animation-loop', function () {
-      console.log("animation loop");
-    });
-   
-  
-    // exampleTarget.addEventListener('targetFound', () => {
-    //   console.log("target found");
-    //   bot.setAttribute("animation-mixer","timeScale:1");
-      
-    //   var jumpTrans = function () {
-    //     scene.removeEventListener('animation-loop',jumpTrans);
-    //     bot.setAttribute("animation-mixer","timeScale:0");
-    //     // console.log("scene ="+scene);
-    //     console.log("fire")
-    //   };
-    //   setTimeout (function(){
-    //     scene.addEventListener('animation-loop',jumpTrans);
-    //   },5000);
+    // var bot = document.querySelector('#example-model');
+    // var scene = document.querySelector('a-scene');
+    // scene.addEventListener('animation-loop', function () {
+    //   console.log("animation loop");
     // });
+   
 
-    //   if (this.el != jumpBut){  
-    //     bot.setAttribute("animation-mixer",this.data); 
-    //      scene.removeEventListener('animation-loop', jumpTrans);
-    //      prevData = this.data;
-         
-    //  }
-        
-    //  if (this.el == jumpBut) {
-        
-    //     bot.setAttribute("animation-mixer",this.data); 
-    //     var jumpTrans = function () {scene.removeEventListener('animation-loop',jumpTrans); bot.setAttribute("animation-mixer",prevData);console.log("scene ="+scene); console.log("fire")};  
-    //     console.log("prev data from jump button = "+prevData); 
-    //    setTimeout (function(){scene.addEventListener('animation-loop',jumpTrans);},500);     
-     
-    //  }
-        
-     
-    // }); 
-      
       
       
 
+// exampleTarget.addEventListener("click", event => {
+//   console.log("plane click");
+// });
       
     </script>
   </body>
