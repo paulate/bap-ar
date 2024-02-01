@@ -23,8 +23,8 @@
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
     
-      <a-entity id="example-target" animation-control="timeScale:1;" mindar-image-target="targetIndex: 0"> <!--page 9-->
-          <a-gltf-model id="example-model" rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p9" animation-mixer>
+      <a-entity id="example-target" mindar-image-target="targetIndex: 0"> <!--page 9-->
+          <a-gltf-model id="example-model" rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p9" animation-mixer="loop:once;timeScale:0">
           <!-- <a-text id="text-target" value="heyo" color="black" align="center" width="2" position="0 -.1 0"></a-text> -->
       </a-entity>
     
@@ -32,17 +32,29 @@
     <script>
       const exampleTarget = document.querySelector('#example-target');
       const textTarget = document.querySelector('#text-target');
-      const exampleModel = document.querySelector('#example-model');
-      // exampleTarget.addEventListener("targetFound", event => {
-      //   // textTarget.setAttribute("value", "clcik meee");
-      //   console.log("target found")
-      //   exampleModel.setAttribute("animation-mixer", "");
-      // });
-      // exampleTarget.addEventListener("targetLost", event => {
-      //   // textTarget.setAttribute("value", "clcik meee");
-      //   console.log("target lost")
-      //   exampleModel.setAttribute("animation-mixer", " startAt:0;");
-      // });
+      let exampleModel = document.querySelector('#example-model');
+      exampleTarget.addEventListener("targetFound", event => {
+        // exampleTarget.appendChild(exampleModel);
+        // textTarget.setAttribute("value", "clcik meee");
+        // console.log("target found")
+        exampleModel.setAttribute("animation-mixer", "timeScale:1");
+      });
+      exampleTarget.addEventListener("targetLost", event => {
+        // textTarget.setAttribute("value", "clcik meee");
+        console.log("target lost")
+        // exampleModel.setAttribute("animation-mixer", );
+        exampleTarget.removeChild(exampleModel)
+      
+          exampleModel = document.createElement('a-gltf-model');
+          exampleModel.setAttribute("id", "example-model");
+          exampleModel.setAttribute("rotation", "0 0 0");
+          exampleModel.setAttribute("position", "0 0 0");
+          exampleModel.setAttribute("scale", "4.0 4.0 4.0");
+          exampleModel.setAttribute("src", "#bap-p9");
+          exampleModel.setAttribute("animation-mixer", "loop:once;timeScale:0");
+          exampleTarget.appendChild(exampleModel);
+        
+      });
 
       var prevData = "";
     var scene = document.querySelector('a-scene');  
@@ -51,28 +63,28 @@
    
     
         
-AFRAME.registerComponent('animation-control', {
-  schema: {default: ''},
-  init() {
-     
+
     var bot = document.querySelector('#example-model');
     var scene = document.querySelector('a-scene');
-    
+    scene.addEventListener('animation-loop', function () {
+      console.log("animation loop");
+    });
    
   
-  this.el.addEventListener('targetFound', () => {
-    console.log("target found");
-    bot.setAttribute("animation-mixer",this.data);
-    var jumpTrans = function () {
-      scene.removeEventListener('animation-loop',jumpTrans);
-      bot.setAttribute("animation-mixer","timeScale:0");
-      // console.log("scene ="+scene);
-      console.log("fire")
-    };
-    setTimeout (function(){
-      scene.addEventListener('animation-loop',jumpTrans);
-    },5000);
-    });
+    // exampleTarget.addEventListener('targetFound', () => {
+    //   console.log("target found");
+    //   bot.setAttribute("animation-mixer","timeScale:1");
+      
+    //   var jumpTrans = function () {
+    //     scene.removeEventListener('animation-loop',jumpTrans);
+    //     bot.setAttribute("animation-mixer","timeScale:0");
+    //     // console.log("scene ="+scene);
+    //     console.log("fire")
+    //   };
+    //   setTimeout (function(){
+    //     scene.addEventListener('animation-loop',jumpTrans);
+    //   },5000);
+    // });
 
     //   if (this.el != jumpBut){  
     //     bot.setAttribute("animation-mixer",this.data); 
@@ -95,8 +107,7 @@ AFRAME.registerComponent('animation-control', {
       
       
       
-  }
-});
+
       
     </script>
   </body>
