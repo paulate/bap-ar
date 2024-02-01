@@ -1,0 +1,103 @@
+
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v7.0.0/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+ 
+  </head>
+  <body>
+
+    <a-scene mindar-image="imageTargetSrc: targets/matematika.mind;missTolerance: 10" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <a-assets>
+        <a-asset-item id="bap-p2" src="img/bap-p2-1_30.gltf"></a-asset-item>
+        <a-asset-item id="bap-p3" src="img/bap-p3-1_30.gltf"></a-asset-item>
+        <a-asset-item id="bap-p4" src="img/bap-p4-1_30_1.gltf"></a-asset-item>
+        <a-asset-item id="bap-p5" src="img/bap-p5-1_30_1.gltf"></a-asset-item>
+        <a-asset-item id="bap-p6" src="img/bap-p6-1_30.gltf"></a-asset-item>
+        <a-asset-item id="bap-p7" src="img/bap-p7-1_30.gltf"></a-asset-item>
+        <a-asset-item id="bap-p8" src="img/bap-p8-1_30_1.gltf"></a-asset-item>
+        <a-asset-item id="bap-p9" src="img/page-explode-flattened1.gltf"></a-asset-item>
+      </a-assets>
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+    
+      <a-entity id="example-target" animation-control="timeScale:1;" mindar-image-target="targetIndex: 0"> <!--page 9-->
+          <a-gltf-model id="example-model" rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p9" animation-mixer>
+          <!-- <a-text id="text-target" value="heyo" color="black" align="center" width="2" position="0 -.1 0"></a-text> -->
+      </a-entity>
+    
+    </a-scene>
+    <script>
+      const exampleTarget = document.querySelector('#example-target');
+      const textTarget = document.querySelector('#text-target');
+      const exampleModel = document.querySelector('#example-model');
+      // exampleTarget.addEventListener("targetFound", event => {
+      //   // textTarget.setAttribute("value", "clcik meee");
+      //   console.log("target found")
+      //   exampleModel.setAttribute("animation-mixer", "");
+      // });
+      // exampleTarget.addEventListener("targetLost", event => {
+      //   // textTarget.setAttribute("value", "clcik meee");
+      //   console.log("target lost")
+      //   exampleModel.setAttribute("animation-mixer", " startAt:0;");
+      // });
+
+      var prevData = "";
+    var scene = document.querySelector('a-scene');  
+    var playOnce = false; 
+ 
+   
+    
+        
+AFRAME.registerComponent('animation-control', {
+  schema: {default: ''},
+  init() {
+     
+    var bot = document.querySelector('#example-model');
+    var scene = document.querySelector('a-scene');
+    
+   
+  
+  this.el.addEventListener('targetFound', () => {
+    console.log("target found");
+    bot.setAttribute("animation-mixer",this.data);
+    var jumpTrans = function () {
+      scene.removeEventListener('animation-loop',jumpTrans);
+      bot.setAttribute("animation-mixer","timeScale:0");
+      // console.log("scene ="+scene);
+      console.log("fire")
+    };
+    setTimeout (function(){
+      scene.addEventListener('animation-loop',jumpTrans);
+    },5000);
+    });
+
+    //   if (this.el != jumpBut){  
+    //     bot.setAttribute("animation-mixer",this.data); 
+    //      scene.removeEventListener('animation-loop', jumpTrans);
+    //      prevData = this.data;
+         
+    //  }
+        
+    //  if (this.el == jumpBut) {
+        
+    //     bot.setAttribute("animation-mixer",this.data); 
+    //     var jumpTrans = function () {scene.removeEventListener('animation-loop',jumpTrans); bot.setAttribute("animation-mixer",prevData);console.log("scene ="+scene); console.log("fire")};  
+    //     console.log("prev data from jump button = "+prevData); 
+    //    setTimeout (function(){scene.addEventListener('animation-loop',jumpTrans);},500);     
+     
+    //  }
+        
+     
+    // }); 
+      
+      
+      
+  }
+});
+      
+    </script>
+  </body>
+</html>
