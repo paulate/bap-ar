@@ -106,18 +106,20 @@
 
     <div class="footer">
       <div id="found-overlay" class="hidden">
-        <div style="text-align: center; color: white; font-family: Special Elite; font-weight: 400; word-wrap: break-word;">Read original</div>
+        <div style="text-align: center; color: white; font-family: Special Elite; font-weight: 400; word-wrap: break-word;">
+          Read original
+          </div>
         <div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
-            <g clip-path="url(#clip0_23_23)">
-              <path d="M11.3827 2.0323L6.16489 7.2501L7.24989 8.3351L12.4677 3.1173V6.73378H14V0.5H7.76621V2.0323H11.3827ZM10.1344 8.26608V12.967H3.86633V2.0323H6.23391V0.5H2.33347V14.5H11.6668V8.26622L10.1344 8.26608Z" fill="white"/>
-            </g>
-            <defs>
-              <clipPath id="clip0_23_23">
-                <rect width="14" height="14" fill="white" transform="translate(0 0.5)"/>
-              </clipPath>
-            </defs>
-          </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+              <g clip-path="url(#clip0_23_23)">
+                <path d="M11.3827 2.0323L6.16489 7.2501L7.24989 8.3351L12.4677 3.1173V6.73378H14V0.5H7.76621V2.0323H11.3827ZM10.1344 8.26608V12.967H3.86633V2.0323H6.23391V0.5H2.33347V14.5H11.6668V8.26622L10.1344 8.26608Z" fill="white"/>
+              </g>
+              <defs>
+                <clipPath id="clip0_23_23">
+                  <rect width="14" height="14" fill="white" transform="translate(0 0.5)"/>
+                </clipPath>
+              </defs>
+            </svg>
         </div>  
       </div>
     </div>
@@ -144,19 +146,19 @@
       </a-entity>
       <a-entity mindar-image-target="targetIndex: 2"><!--page 4-->
         <a-gltf-model rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p4" animation-mixer>
-        </a-entity>
+      </a-entity>
       <a-entity mindar-image-target="targetIndex: 3"><!--page 5-->
         <a-gltf-model rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p5" animation-mixer>
-        </a-entity>
+      </a-entity>
       <a-entity mindar-image-target="targetIndex: 4"><!--page 6-->
         <a-gltf-model rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p6" animation-mixer>
-        </a-entity>
+      </a-entity>
       <a-entity mindar-image-target="targetIndex: 5"><!--page 7-->
         <a-gltf-model rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p7" animation-mixer>
-        </a-entity>
+      </a-entity>
       <a-entity mindar-image-target="targetIndex: 6"><!--page 8-->
         <a-gltf-model rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p8" animation-mixer>
-        </a-entity>
+      </a-entity>
       <a-entity mindar-image-target="targetIndex: 7"> <!--page 9-->
           <a-gltf-model rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p9" animation-mixer>
       </a-entity>
@@ -166,12 +168,25 @@
     <script>
       const foundOverlay = document.querySelector('#found-overlay');
       let entities = document.querySelectorAll('a-entity');
+      let redirectUrl = 'text.html';
+      const poemDict = {
+            'p2': 'i',
+            'p3': 'i',
+            'p4': 'ii',
+            'p5': 'ii',
+            'p6': 'iii',
+            'p7': 'iii',
+            'p8': 'iv',
+            'p9': 'v',
+          }
       entities.forEach(entity => {
         entity.addEventListener('targetFound', event => {
           console.log('target found');
           foundOverlay.classList.remove('hidden');
           let model = entity.querySelector('a-gltf-model');
           model.setAttribute('animation-mixer', 'timeScale:1');
+          let poem = model.getAttribute('src').split('-')[1].split('.')[0];
+          redirectUrl = 'text.html' + '#' + poemDict[poem];
         });
         entity.addEventListener('targetLost', event => {
           console.log('target lost');
@@ -191,6 +206,13 @@
         newModel.setAttribute("animation-mixer", "loop:once;timeScale:0");
         parent.appendChild(newModel);
       }
+
+  
+    // Add click event listener
+    foundOverlay.addEventListener('click', () => {
+      // Redirect to index.html
+      window.location.href = redirectUrl;
+    });
     </script>
   </body>
 </html>

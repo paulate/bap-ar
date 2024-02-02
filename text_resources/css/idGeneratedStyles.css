@@ -1,0 +1,500 @@
+
+
+#found-overlay {
+	padding:10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+	border-radius: 10px;
+	background: rgba(0, 0, 0, 0.9);
+}
+
+.footer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 20px;
+	background: transparent;
+	z-index: 2;
+}
+
+div, dl, dt, dd, h1, h2, h3, h4, h5, h6, p, pre, code, blockquote {
+	margin:0;
+	padding:0;
+	border-width:0;
+}
+body {
+	-epub-hyphens:auto;
+	background-color: #990000;
+	margin:4em;
+	padding:0;
+	max-width:600px;
+	border-width:0;
+}
+p.Align-on-Right {
+	-epub-hyphens:none;
+	color:#eeeeee;
+	font-family:"Special Elite", serif;
+	font-size:13px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:1.538;
+	margin-bottom:9px;
+	margin-left:261px;
+	margin-right:0;
+	margin-top:0;
+	orphans:1;
+	page-break-after:auto;
+	page-break-before:auto;
+	text-align:left;
+	text-decoration:none;
+	text-indent:0;
+	text-transform:none;
+	widows:1;
+}
+p.Article-Title {
+	-epub-hyphens:none;
+	color:#eeeeee;
+	font-family:"Special Elite", serif;
+	font-size:13px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:1.538;
+	margin-bottom:18px;
+	margin-left:0;
+	margin-right:0;
+	margin-top:18px;
+	orphans:1;
+	page-break-after:auto;
+	page-break-before:auto;
+	text-align:left;
+	text-decoration:none;
+	text-indent:0;
+	text-transform:none;
+	widows:1;
+}
+p.Article-Title---123 {
+	-epub-hyphens:none;
+	color:#eeeeee;
+	font-family:"Special Elite", serif;
+	font-size:13px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:1.538;
+	list-style-position:inside;
+	list-style-type:decimal;
+	margin-bottom:36px;
+	margin-left:0;
+	margin-right:0;
+	margin-top:36px;
+	orphans:1;
+	page-break-after:auto;
+	page-break-before:auto;
+	text-align:left;
+	text-decoration:none;
+	text-indent:0;
+	text-transform:none;
+	widows:1;
+}
+p.Article-Title---ABC {
+	-epub-hyphens:none;
+	color:#eeeeee;
+	font-family:"Special Elite", serif;
+	font-size:13px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:1.538;
+	list-style-position:inside;
+	list-style-type:upper-alpha;
+	margin-bottom:36px;
+	margin-left:0;
+	margin-right:0;
+	margin-top:36px;
+	orphans:1;
+	page-break-after:auto;
+	page-break-before:auto;
+	text-align:left;
+	text-decoration:none;
+	text-indent:0;
+	text-transform:none;
+	widows:1;
+}
+p.Article-Title---Roman-Numerals {
+	-epub-hyphens:none;
+	color:#eeeeee;
+	font-family:"Special Elite", serif;
+	font-size:13px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:1.538;
+	list-style-position:inside;
+	list-style-type:upper-roman;
+	margin-bottom:36px;
+	margin-left:0;
+	margin-right:0;
+	margin-top:36px;
+	orphans:1;
+	page-break-after:auto;
+	page-break-before:auto;
+	text-align:left;
+	text-decoration:none;
+	text-indent:0;
+	text-transform:none;
+	widows:1;
+}
+p.Body-Text {
+	-epub-hyphens:none;
+	color:#eeeeee;
+	font-family:"Special Elite", serif;
+	font-size:13px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:1.538;
+	margin-bottom:9px;
+	margin-left:0;
+	margin-right:0;
+	margin-top:0;
+	orphans:1;
+	page-break-after:auto;
+	page-break-before:auto;
+	text-align:left;
+	text-decoration:none;
+	text-indent:0;
+	text-transform:none;
+	widows:1;
+}
+p.Centered {
+	-epub-hyphens:none;
+	color:#eeeeee;
+	font-family:"Special Elite", serif;
+	font-size:13px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:1.538;
+	margin-bottom:9px;
+	margin-left:0;
+	margin-right:0;
+	margin-top:0;
+	orphans:1;
+	page-break-after:auto;
+	page-break-before:auto;
+	text-align:center;
+	text-decoration:none;
+	text-indent:0;
+	text-transform:none;
+	widows:1;
+}
+p.Centered-Pancasila {
+	-epub-hyphens:none;
+	color:#eeeeee;
+	font-family:"Special Elite", serif;
+	font-size:13px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:1.538;
+	margin-bottom:18px;
+	margin-left:0;
+	margin-right:0;
+	margin-top:0;
+	orphans:1;
+	page-break-after:auto;
+	page-break-before:auto;
+	text-align:center;
+	text-decoration:none;
+	text-indent:0;
+	text-transform:none;
+	widows:1;
+}
+p.Centered-w-Space-before {
+	-epub-hyphens:none;
+	color:#eeeeee;
+	font-family:"Special Elite", serif;
+	font-size:13px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:1.538;
+	margin-bottom:9px;
+	margin-left:0;
+	margin-right:0;
+	margin-top:18px;
+	orphans:1;
+	page-break-after:auto;
+	page-break-before:auto;
+	text-align:center;
+	text-decoration:none;
+	text-indent:0;
+	text-transform:none;
+	widows:1;
+}
+p.Heading---Law {
+	-epub-hyphens:none;
+	color:#eeeeee;
+	font-family:"Special Elite", serif;
+	font-size:13px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:1.538;
+	margin-bottom:0;
+	margin-left:0;
+	margin-right:0;
+	margin-top:18px;
+	orphans:1;
+	page-break-after:auto;
+	page-break-before:auto;
+	text-align:center;
+	text-decoration:none;
+	text-indent:0;
+	text-transform:none;
+	widows:1;
+}
+p.Indent---L1 {
+	-epub-hyphens:none;
+	color:#eeeeee;
+	font-family:"Special Elite", serif;
+	font-size:13px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:1.538;
+	margin-bottom:9px;
+	margin-left:36px;
+	margin-right:0;
+	margin-top:0;
+	orphans:1;
+	page-break-after:auto;
+	page-break-before:auto;
+	text-align:left;
+	text-decoration:none;
+	text-indent:0;
+	text-transform:none;
+	widows:1;
+}
+p.Indent---L1-Numeral {
+	-epub-hyphens:none;
+	color:#eeeeee;
+	font-family:"Special Elite", serif;
+	font-size:13px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:1.538;
+	list-style-position:outside;
+	list-style-type:decimal;
+	margin-bottom:9px;
+	margin-left:36px;
+	margin-right:0;
+	margin-top:0;
+	orphans:1;
+	page-break-after:auto;
+	page-break-before:auto;
+	text-align:left;
+	text-decoration:none;
+	text-indent:-36px;
+	text-transform:none;
+	widows:1;
+}
+p.Indent---L1-Roman-Numerals {
+	-epub-hyphens:none;
+	color:#eeeeee;
+	font-family:"Special Elite", serif;
+	font-size:13px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:1.538;
+	list-style-position:outside;
+	list-style-type:upper-roman;
+	margin-bottom:9px;
+	margin-left:72px;
+	margin-right:0;
+	margin-top:0;
+	orphans:1;
+	page-break-after:auto;
+	page-break-before:auto;
+	text-align:left;
+	text-decoration:none;
+	text-indent:-36px;
+	text-transform:none;
+	widows:1;
+}
+p.Indent---L1-abc-1 {
+	-epub-hyphens:none;
+	color:#eeeeee;
+	font-family:"Special Elite", serif;
+	font-size:13px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:1.538;
+	list-style-position:outside;
+	list-style-type:lower-alpha;
+	margin-bottom:9px;
+	margin-left:36px;
+	margin-right:0;
+	margin-top:0;
+	orphans:1;
+	page-break-after:auto;
+	page-break-before:auto;
+	text-align:left;
+	text-decoration:none;
+	text-indent:-36px;
+	text-transform:none;
+	widows:1;
+}
+p.Indent---L1-5-abc {
+	-epub-hyphens:none;
+	color:#eeeeee;
+	font-family:"Special Elite", serif;
+	font-size:13px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:1.538;
+	list-style-position:outside;
+	list-style-type:lower-alpha;
+	margin-bottom:9px;
+	margin-left:72px;
+	margin-right:0;
+	margin-top:0;
+	orphans:1;
+	page-break-after:auto;
+	page-break-before:auto;
+	text-align:left;
+	text-decoration:none;
+	text-indent:-36px;
+	text-transform:none;
+	widows:1;
+}
+p.Indent---L2 {
+	-epub-hyphens:none;
+	color:#eeeeee;
+	font-family:"Special Elite", serif;
+	font-size:13px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:1.538;
+	margin-bottom:9px;
+	margin-left:72px;
+	margin-right:0;
+	margin-top:0;
+	orphans:1;
+	page-break-after:auto;
+	page-break-before:auto;
+	text-align:left;
+	text-decoration:none;
+	text-indent:0;
+	text-transform:none;
+	widows:1;
+}
+p.Indent---L2-Numeric {
+	-epub-hyphens:none;
+	color:#eeeeee;
+	font-family:"Special Elite", serif;
+	font-size:13px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:1.538;
+	list-style-position:outside;
+	list-style-type:decimal;
+	margin-bottom:9px;
+	margin-left:72px;
+	margin-right:0;
+	margin-top:0;
+	orphans:1;
+	page-break-after:auto;
+	page-break-before:auto;
+	text-align:left;
+	text-decoration:none;
+	text-indent:-36px;
+	text-transform:none;
+	widows:1;
+}
+p.Indent---L2-quote-bullet {
+	-epub-hyphens:none;
+	color:#eeeeee;
+	font-family:"Special Elite", serif;
+	font-size:13px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:1.538;
+	list-style-position:inside;
+	list-style-type:decimal;
+	margin-bottom:9px;
+	margin-left:54px;
+	margin-right:0;
+	margin-top:0;
+	orphans:1;
+	page-break-after:auto;
+	page-break-before:auto;
+	text-align:left;
+	text-decoration:none;
+	text-indent:0;
+	text-transform:none;
+	widows:1;
+}
+p.Basic-Paragraph {
+	-epub-hyphens:none;
+	color:#eeeeee;
+	font-family:"Special Elite", serif;
+	font-size:13px;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:normal;
+	line-height:1.538;
+	margin-bottom:9px;
+	margin-left:0;
+	margin-right:0;
+	margin-top:0;
+	orphans:1;
+	page-break-after:auto;
+	page-break-before:auto;
+	text-align:left;
+	text-decoration:none;
+	text-indent:0;
+	text-transform:none;
+	widows:1;
+}
+span.Basic-Style{
+	background: rgba(0, 0, 0, 0.5);
+}
+span.Poem {
+	color:#ffffff;
+	font-size:18px;
+	text-decoration:none;
+}
+span._idGenBNMarker-1 {
+	display:inline-block;
+	text-indent:0;
+	width:36px;
+}
+span._idGenBNMarker-2 {
+	display:inline-block;
+	text-indent:0;
+	width:18px;
+}
+p.ParaOverride-1 {
+	list-style-type:none;
+}
+p._idGenParaOverride-1 {
+	page-break-after:always;
+}
+div._idGenObjectStyleOverride-1 {
+	border-width:0px;
+}
