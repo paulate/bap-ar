@@ -4,7 +4,8 @@
     "mind-ar": "^1.2.3"
   },
   "devDependencies": {
-    "http-server": "^14.1.1"
+    "http-server": "^14.1.1",
+    "prettier": "^3.2.5"
   },
   "scripts": {
     "start": "http-server"
