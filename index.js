@@ -1,21 +1,40 @@
+const createAssetLoadingStatus = (id) => ({ id, loaded: false });
+
+const beginLoadingAssets = (state) => {
+  state.assetLoadingStatusById = {};
+  /**
+   *  Collects all a-frame asset items.
+   **/
+  const assetElements = document.querySelectorAll("a-asset-item");
+
+  /**
+   *  Loops over each a-frame asset item and creates a loading status object
+   *  for tracking the loading status of each asset.
+   **/
+  for (const assetElement of assetElements) {
+    const id = assetElement.getAttribute("id");
+    assetLoadingStatusById[id] = createAssetLoadingStatus(id);
+
+    /**
+     *  When the asset is loaded, set the loaded status to true.
+     **/
+    assetElement.addEventListener("loaded", () => {
+      assetLoadingStatusById[id].loaded = true;
+
+      console.log("assetLoadingStatusById");
+      console.log(assetLoadingStatusById);
+    });
+  }
+};
+
 /**
  * When document is loaded, starts up the AR app.
  */
 document.addEventListener("DOMContentLoaded", () => {
-  const assets = [
-    { url: "img/page2-01.glb", id: "bap-p2" },
-    { url: "img/page3-01.glb", id: "bap-p3" },
-    { url: "img/page4-01.glb", id: "bap-p4" },
-    { url: "img/page5-01.glb", id: "bap-p5" },
-    { url: "img/page6-01.glb", id: "bap-p6" },
-    { url: "img/page7-01.glb", id: "bap-p7" },
-    { url: "img/page8-01.glb", id: "bap-p8" },
-    { url: "img/page9-01.glb", id: "bap-p9" },
-    { url: "img/page10-01.glb", id: "bap-p10" },
-    { url: "img/page11-01.glb", id: "bap-p11" },
-    { url: "img/page12-01.glb", id: "bap-p12" },
-    { url: "img/page13-01.glb", id: "bap-p13" },
-  ];
+  const state = {
+    assetLoadingStatusById: {},
+  };
+
   const foundOverlay = document.querySelector("#found-overlay");
   let entities = document.querySelectorAll("a-entity");
   let redirectUrl = "text.html";
@@ -33,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     p12: "iv",
     p13: "v",
   };
+
   entities.forEach((entity) => {
     entity.addEventListener("targetFound", (event) => {
       console.log("target found");
