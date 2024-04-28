@@ -10,6 +10,14 @@
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
     <style>
 
+    body {
+        text-align: center;
+        color: white;
+        font-family: Special Elite;
+        font-weight: 400;
+        word-wrap: break-word;
+    }
+
      #scanning-overlay {
           display: flex;
           align-items: center;
@@ -54,10 +62,6 @@
         background-size: 40px 40px;
       }
 
-      #scanning-overlay.hidden {
-	      display: none;
-      }
-
       #scanning-overlay .inner .scanline {
         position: absolute;
         width: 100%;
@@ -70,7 +74,7 @@
 	      50% { top: calc(100% - 10px) }
       }
       
-      #found-overlay.hidden {
+      #scanning-overlay.hidden {
         display:none;
       }
       
@@ -84,6 +88,10 @@
         background: rgba(0, 0, 0, 0.50);
       }
 
+      #found-overlay.hidden {
+        display:none;
+      }
+
       .footer {
         display: flex;
         align-items: center;
@@ -95,10 +103,24 @@
         background: transparent;
         z-index: 2;
       }
+
+      #loading-overlay {
+        position: absolute;
+        width: 100%;
+        top: 20%;
+        z-index: 1000;
+      }
+      #loading-overlay.hidden {
+        display: none;
+      }
      </style>
   </head>
   <body>
-    <div id="scanning-overlay">
+      <div id="loading-overlay">
+        <div>Loading...</div>
+        <p id="loading-percentage"></p>
+      </div>
+    <div id="scanning-overlay" class="hidden">
       <div class="inner">
 	      <div class="scanline"></div>
         <!-- todo: maybe instead of scanline do a fadein/fadeout of red, LOADING BAR-->
@@ -106,7 +128,7 @@
     </div>
     <div class="footer">
       <div id="found-overlay" class="hidden"> <!-- Read Original-->
-        <div style="text-align: center; color: white; font-family: Special Elite; font-weight: 400; word-wrap: break-word;">Read original</div>
+        <div>Read original</div>
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
             <g clip-path="url(#clip0_23_23)">
@@ -122,7 +144,7 @@
       </div>
     </div>
     
-    <a-scene mindar-image="imageTargetSrc: targets/banners.mind;missTolerance: 10;uiScanning:#scanning-overlay" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    <a-scene loading-screen="dotsColor: white" mindar-image="imageTargetSrc: targets/banners.mind;missTolerance: 10;uiScanning:#scanning-overlay" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets>
         <a-asset-item id="bap-p2" src="img/page2-01.glb"></a-asset-item>
         <a-asset-item id="bap-p3" src="img/page3-01.glb"></a-asset-item>

@@ -1,7 +1,78 @@
 /**
+ *  Creates an object to track the loading status of a single asset.
+ **/
+const createAssetLoadingStatus = (id) => ({ id, loaded: false, progress: 0 });
+
+/**
+ * Handles updating the gui when any asset makes loading progress.
+ **/
+const handleLoadingProgress = (state) => {
+  const assetLoadedPerc = Object.values(state.assetLoadingStatusById)
+    .map((status) => (status.loaded ? 1.0 : status.progress))
+    .reduce((a, b) => a + b, 0);
+  const totalNumAssets = Object.values(state.assetLoadingStatusById).length;
+
+  const progress = assetLoadedPerc / totalNumAssets;
+
+  // Display progress as text
+  const progressElement = document.querySelector("p#loading-percentage");
+  progressElement.innerText = `${Math.round(progress * 100)}%`;
+
+  /**
+   * When all assets are loaded, hide the loading screen.
+   */
+  if (progress === 1) {
+    const loadingScreen = document.querySelector("#loading-overlay");
+    loadingScreen.classList.add("hidden");
+  }
+};
+
+/**
+ *  Called once at app startup to start tracking the loading status of all assets.
+ */
+const startAssetLoadingGui = (state) => {
+  state.assetLoadingStatusById = {};
+  /**
+   *  Collects all a-frame asset items.
+   **/
+  const assetElements = document.querySelectorAll("a-asset-item");
+
+  /**
+   *  Loops over each a-frame asset item and creates a loading status object
+   *  for tracking the loading status of each asset.
+   **/
+  for (const assetElement of assetElements) {
+    const id = assetElement.getAttribute("id");
+    state.assetLoadingStatusById[id] = createAssetLoadingStatus(id);
+
+    /**
+     *  When the asset is loaded, set the loaded status to true.
+     **/
+    assetElement.addEventListener("loaded", () => {
+      state.assetLoadingStatusById[id].loaded = true;
+      handleLoadingProgress(state);
+    });
+
+    /**
+     * When the asset makes progress, update the progress value.
+     **/
+    assetElement.addEventListener("progress", (event) => {
+      state.assetLoadingStatusById[id].progress =
+        event.detail.loadedBytes / event.detail.totalBytes;
+      handleLoadingProgress(state);
+    });
+  }
+};
+
+/**
  * When document is loaded, starts up the AR app.
  */
 document.addEventListener("DOMContentLoaded", () => {
+  const state = {
+    assetLoadingStatusById: {},
+  };
+  startAssetLoadingGui(state);
+
   const foundOverlay = document.querySelector("#found-overlay");
   let entities = document.querySelectorAll("a-entity");
   let redirectUrl = "text.html";
@@ -19,6 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
     p12: "iv",
     p13: "v",
   };
+
   entities.forEach((entity) => {
     entity.addEventListener("targetFound", (event) => {
       console.log("target found");
