@@ -1,5 +1,11 @@
+/**
+ *  Creates an object to track the loading status of a single asset.
+ **/
 const createAssetLoadingStatus = (id) => ({ id, loaded: false, progress: 0 });
 
+/**
+ * Handles updating the gui when any asset makes loading progress.
+ **/
 const handleLoadingProgress = (state) => {
   const assetLoadedPerc = Object.values(state.assetLoadingStatusById)
     .map((status) => (status.loaded ? 1.0 : status.progress))
@@ -21,7 +27,10 @@ const handleLoadingProgress = (state) => {
   }
 };
 
-const beginLoadingAssets = (state) => {
+/**
+ *  Called once at app startup to start tracking the loading status of all assets.
+ */
+const startAssetLoadingGui = (state) => {
   state.assetLoadingStatusById = {};
   /**
    *  Collects all a-frame asset items.
@@ -62,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const state = {
     assetLoadingStatusById: {},
   };
-  beginLoadingAssets(state);
+  startAssetLoadingGui(state);
 
   const foundOverlay = document.querySelector("#found-overlay");
   let entities = document.querySelectorAll("a-entity");
