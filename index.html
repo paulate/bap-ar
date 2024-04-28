@@ -1,3 +1,4 @@
+
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -100,85 +101,102 @@
     <div id="scanning-overlay">
       <div class="inner">
 	      <div class="scanline"></div>
-        <!-- todo: maybe instead of scanline do a fadein/fadeout of red -->
+        <!-- todo: maybe instead of scanline do a fadein/fadeout of red, LOADING BAR-->
       </div>
     </div>
-
     <div class="footer">
-      <div id="found-overlay" class="hidden">
-        <div style="text-align: center; color: white; font-family: Special Elite; font-weight: 400; word-wrap: break-word;">
-          Read original
-          </div>
+      <div id="found-overlay" class="hidden"> <!-- Read Original-->
+        <div style="text-align: center; color: white; font-family: Special Elite; font-weight: 400; word-wrap: break-word;">Read original</div>
         <div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
-              <g clip-path="url(#clip0_23_23)">
-                <path d="M11.3827 2.0323L6.16489 7.2501L7.24989 8.3351L12.4677 3.1173V6.73378H14V0.5H7.76621V2.0323H11.3827ZM10.1344 8.26608V12.967H3.86633V2.0323H6.23391V0.5H2.33347V14.5H11.6668V8.26622L10.1344 8.26608Z" fill="white"/>
-              </g>
-              <defs>
-                <clipPath id="clip0_23_23">
-                  <rect width="14" height="14" fill="white" transform="translate(0 0.5)"/>
-                </clipPath>
-              </defs>
-            </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+            <g clip-path="url(#clip0_23_23)">
+              <path d="M11.3827 2.0323L6.16489 7.2501L7.24989 8.3351L12.4677 3.1173V6.73378H14V0.5H7.76621V2.0323H11.3827ZM10.1344 8.26608V12.967H3.86633V2.0323H6.23391V0.5H2.33347V14.5H11.6668V8.26622L10.1344 8.26608Z" fill="white"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_23_23">
+                <rect width="14" height="14" fill="white" transform="translate(0 0.5)"/>
+              </clipPath>
+            </defs>
+          </svg>
         </div>  
       </div>
     </div>
-
-    <a-scene mindar-image="imageTargetSrc: targets/office-all.mind;missTolerance: 10;uiScanning:#scanning-overlay" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    
+    <a-scene mindar-image="imageTargetSrc: targets/banners.mind;missTolerance: 10;uiScanning:#scanning-overlay" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets>
-        <a-asset-item id="bap-p2" src="img/bap-p2_0201.gltf"></a-asset-item>
-        <a-asset-item id="bap-p3" src="img/bap-p3_0201-2.gltf"></a-asset-item>
-        <a-asset-item id="bap-p4" src="img/bap-p4_0201.gltf"></a-asset-item>
-        <a-asset-item id="bap-p5" src="img/bap-p5_0201.gltf"></a-asset-item>
-        <a-asset-item id="bap-p6" src="img/bap-p6_0201.gltf"></a-asset-item> 
-        <a-asset-item id="bap-p7" src="img/bap-p7_0201.gltf"></a-asset-item> 
-        <a-asset-item id="bap-p8" src="img/bap-p8_0201.gltf"></a-asset-item>
-        <a-asset-item id="bap-p9" src="img/bap-p9_0201.gltf"></a-asset-item>
+        <a-asset-item id="bap-p2" src="img/page02-01.glb"></a-asset-item>
+        <a-asset-item id="bap-p3" src="img/page03-01.glb"></a-asset-item>
+        <a-asset-item id="bap-p4" src="img/page04-01.glb"></a-asset-item>
+        <a-asset-item id="bap-p5" src="img/page05-01.glb"></a-asset-item>
+        <a-asset-item id="bap-p6" src="img/page06-01.glb"></a-asset-item>
+        <a-asset-item id="bap-p7" src="img/page07-01.glb"></a-asset-item>
+        <a-asset-item id="bap-p8" src="img/page08-01.glb"></a-asset-item>
+        <a-asset-item id="bap-p9" src="img/page09-01.glb"></a-asset-item>
+        <a-asset-item id="bap-p10" src="img/page10-01.glb"></a-asset-item>
+        <a-asset-item id="bap-p11" src="img/page11-01.glb"></a-asset-item>
+        <a-asset-item id="bap-p12" src="img/page12-01.glb"></a-asset-item>
+        <a-asset-item id="bap-p13" src="img/page13-01.glb"></a-asset-item>
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
       <a-entity light="type: ambient; color: #fff; intensity:3"></a-entity>
 
-      <a-entity mindar-image-target="targetIndex: 0"><!--page 2-->
-        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p2" animation-mixer="loop:once;timeScale:0">
+      <a-entity mindar-image-target="targetIndex: 0"> 
+        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="2 2 2" src="#bap-p2" animation-mixer="loop:once;timeScale:0; clampWhenFinished: true;">
       </a-entity>
-      <a-entity mindar-image-target="targetIndex: 1"><!--page 3-->
-        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p3" animation-mixer="loop:once;timeScale:0">
+      <a-entity mindar-image-target="targetIndex: 1"> 
+        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="2 2 2" src="#bap-p3" animation-mixer="loop:once;timeScale:0; clampWhenFinished: true;">
       </a-entity>
-      <a-entity mindar-image-target="targetIndex: 2"><!--page 4-->
-        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p4" animation-mixer="loop:once;timeScale:0">
+      <a-entity mindar-image-target="targetIndex: 2"> 
+        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="2 2 2" src="#bap-p4" animation-mixer="loop:once;timeScale:0; clampWhenFinished: true;">
       </a-entity>
-      <a-entity mindar-image-target="targetIndex: 3"><!--page 5-->
-        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p5" animation-mixer="loop:once;timeScale:0">
+      <a-entity mindar-image-target="targetIndex: 3"> 
+        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="2 2 2" src="#bap-p5" animation-mixer="loop:once;timeScale:0; clampWhenFinished: true;">
       </a-entity>
-      <a-entity mindar-image-target="targetIndex: 4"><!--page 6-->
-        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p6" animation-mixer="loop:once;timeScale:0">
+      <a-entity mindar-image-target="targetIndex: 4"> 
+        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="2 2 2" src="#bap-p6" animation-mixer="loop:once;timeScale:0; clampWhenFinished: true;">
       </a-entity>
-      <a-entity mindar-image-target="targetIndex: 5"><!--page 7-->
-        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p7" animation-mixer="loop:once;timeScale:0">
+      <a-entity mindar-image-target="targetIndex: 5"> 
+        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="2 2 2" src="#bap-p7" animation-mixer="loop:once;timeScale:0; clampWhenFinished: true;">
       </a-entity>
-      <a-entity mindar-image-target="targetIndex: 6"><!--page 8-->
-        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p8" animation-mixer="loop:once;timeScale:0">
+      <a-entity mindar-image-target="targetIndex: 6"> 
+        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="2 2 2" src="#bap-p8" animation-mixer="loop:once;timeScale:0; clampWhenFinished: true;">
       </a-entity>
-      <a-entity mindar-image-target="targetIndex: 7"> <!--page 9-->
-          <a-gltf-model rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p9" animation-mixer="loop:once;timeScale:0">
+      <a-entity mindar-image-target="targetIndex: 7"> 
+        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="2.55 2.55 2.55" src="#bap-p9" animation-mixer="loop:once;timeScale:0; clampWhenFinished: true;">
       </a-entity>
-    
+      <a-entity mindar-image-target="targetIndex: 8"> 
+        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="2.55 2.55 2.55" src="#bap-p10" animation-mixer="loop:once;timeScale:0; clampWhenFinished: true;">
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 9"> 
+        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="2.55 2.55 2.55" src="#bap-p11" animation-mixer="loop:once;timeScale:0; clampWhenFinished: true;">
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 10"> 
+        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="2.55 2.55 2.55" src="#bap-p12" animation-mixer="loop:once;timeScale:0; clampWhenFinished: true;">
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 11"> 
+        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="2.55 2.55 2.55" src="#bap-p13" animation-mixer="loop:once;timeScale:0; clampWhenFinished: true;">
+      </a-entity>
+
     </a-scene>
 
     <script>
-      const foundOverlay = document.querySelector('#found-overlay');
+     const foundOverlay = document.querySelector('#found-overlay');
       let entities = document.querySelectorAll('a-entity');
       let redirectUrl = 'text.html';
       const poemDict = {
             'p2': 'i',
             'p3': 'i',
-            'p4': 'ii',
-            'p5': 'ii',
-            'p6': 'iii',
-            'p7': 'iii',
-            'p8': 'iv',
-            'p9': 'v',
+            'p4': 'i',
+            'p5': 'i',
+            'p6': 'i',
+            'p7': 'i',
+            'p8': 'i',
+            'p9': 'ii',
+            'p10': 'ii',
+            'p11': 'iii',
+            'p12': 'iv',
+            'p13': 'v',
           }
       entities.forEach(entity => {
         entity.addEventListener('targetFound', event => {
@@ -202,18 +220,21 @@
         let newModel = document.createElement('a-gltf-model');
         newModel.setAttribute("rotation", "0 0 0");
         newModel.setAttribute("position", "0 0 0");
-        newModel.setAttribute("scale", "4.0 4.0 4.0");
+
+        // Get targetIndex from parent entity
+        let targetIndex = parseInt(parent.getAttribute('mindar-image-target').split(':')[1].trim());
+
+        // Set scale based on targetIndex
+        if (targetIndex >= 7 && targetIndex <= 11) {
+          newModel.setAttribute("scale", "2.55 2.55 2.55");
+        } else if (targetIndex >= 1 && targetIndex <= 6) {
+          newModel.setAttribute("scale", "2 2 2");
+        }
+  
         newModel.setAttribute("src", src);
-        newModel.setAttribute("animation-mixer", "loop:once;timeScale:0");
+        newModel.setAttribute("animation-mixer", "loop:once;timeScale:0; clampWhenFinished: true;");
         parent.appendChild(newModel);
       }
-
-  
-    // Add click event listener
-    foundOverlay.addEventListener('click', () => {
-      // Redirect to index.html
-      window.location.href = redirectUrl;
-    });
     </script>
   </body>
 </html>
