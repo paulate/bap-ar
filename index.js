@@ -76,6 +76,12 @@ document.addEventListener("DOMContentLoaded", () => {
     assetLoadingStatusById: {},
     // Stores the total number of assets to load.
     totalNumAssets: 1,
+
+    /**
+     * When an entity is being shown, this is the src string.  For example
+     * `#bap-p2`.  When no entity is shown, this is null.
+     */
+    currentEntitySrc: null,
   };
   startAssetLoadingGui(state);
 
@@ -121,18 +127,30 @@ document.addEventListener("DOMContentLoaded", () => {
   entities.forEach((entity) => {
     entity.addEventListener("targetFound", (event) => {
       console.log("target found");
-      foundOverlay.classList.remove("hidden");
       let model = entity.querySelector("a-gltf-model");
+      const src = model.getAttribute("src");
       model.setAttribute("animation-mixer", "timeScale:1");
-      let poem = model.getAttribute("src").split("-")[1].split(".")[0];
+      let poem = src.split("-")[1].split(".")[0];
       redirectUrl = "text.html" + "#" + poemDict[poem];
+
+      state.currentEntitySrc = src;
+      foundOverlay.classList.remove("hidden");
     });
     entity.addEventListener("targetLost", (event) => {
       console.log("target lost");
-      foundOverlay.classList.add("hidden");
       let model = entity.querySelector("a-gltf-model");
+      const src = model.getAttribute("src");
       entity.removeChild(model);
-      createModel(entity, model.getAttribute("src"));
+      createModel(entity, src);
+
+      /**
+       *  If the same target is currently being shown, hide the call to action
+       *  overlay.
+       **/
+      if (src === state.currentEntitySrc) {
+        state.currentEntitySrc = null;
+        foundOverlay.classList.add("hidden");
+      }
     });
   });
 
