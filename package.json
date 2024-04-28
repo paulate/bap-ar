@@ -2,5 +2,11 @@
   "dependencies": {
     "aframe": "^1.5.0",
     "mind-ar": "^1.2.3"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "scripts": {
+    "start": "http-server"
   }
 }
