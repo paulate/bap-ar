@@ -1,4 +1,32 @@
+//const assets = [
+//{ url: "img/page2-01.glb", id: "bap-p2" },
+//{ url: "img/page3-01.glb", id: "bap-p3" },
+//{ url: "img/page4-01.glb", id: "bap-p4" },
+//{ url: "img/page5-01.glb", id: "bap-p5" },
+//{ url: "img/page6-01.glb", id: "bap-p6" },
+//{ url: "img/page7-01.glb", id: "bap-p7" },
+//{ url: "img/page8-01.glb", id: "bap-p8" },
+//{ url: "img/page9-01.glb", id: "bap-p9" },
+//{ url: "img/page10-01.glb", id: "bap-p10" },
+//{ url: "img/page11-01.glb", id: "bap-p11" },
+//{ url: "img/page12-01.glb", id: "bap-p12" },
+//{ url: "img/page13-01.glb", id: "bap-p13" }
+//];
+
 const createAssetLoadingStatus = (id) => ({ id, loaded: false });
+
+const handleLoadingProgress = (state) => {
+  const numAssetsLoaded = Object.values(state.assetLoadingStatusById).filter(
+    (status) => status.loaded,
+  ).length;
+  const totalNumAssets = Object.values(state.assetLoadingStatusById).length;
+
+  const progress = numAssetsLoaded / totalNumAssets;
+
+  // Display progress as text
+  const progressElement = document.querySelector("p#loading-percentage");
+  progressElement.innerText = `${Math.round(progress * 100)}%`;
+};
 
 const beginLoadingAssets = (state) => {
   state.assetLoadingStatusById = {};
@@ -13,16 +41,14 @@ const beginLoadingAssets = (state) => {
    **/
   for (const assetElement of assetElements) {
     const id = assetElement.getAttribute("id");
-    assetLoadingStatusById[id] = createAssetLoadingStatus(id);
+    state.assetLoadingStatusById[id] = createAssetLoadingStatus(id);
 
     /**
      *  When the asset is loaded, set the loaded status to true.
      **/
     assetElement.addEventListener("loaded", () => {
-      assetLoadingStatusById[id].loaded = true;
-
-      console.log("assetLoadingStatusById");
-      console.log(assetLoadingStatusById);
+      state.assetLoadingStatusById[id].loaded = true;
+      handleLoadingProgress(state);
     });
   }
 };
@@ -34,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const state = {
     assetLoadingStatusById: {},
   };
+  beginLoadingAssets(state);
 
   const foundOverlay = document.querySelector("#found-overlay");
   let entities = document.querySelectorAll("a-entity");
