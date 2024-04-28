@@ -128,3 +128,5 @@ dist
 *.pem
 img/.DS_Store
 targets/.DS_Store
+package-lock.json
+package-lock.json

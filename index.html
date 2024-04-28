@@ -101,14 +101,14 @@
         right: 0;
         bottom: 20px;
         background: transparent;
-        z-index: 2;
+        z-index: 6;
       }
 
       #loading-overlay {
         position: absolute;
         width: 100%;
         top: 20%;
-        z-index: 1000;
+        z-index: 5;
       }
       #loading-overlay.hidden {
         display: none;
@@ -145,7 +145,7 @@
     </div>
     
     <a-scene loading-screen="dotsColor: white" mindar-image="imageTargetSrc: targets/banners.mind;missTolerance: 10;uiScanning:#scanning-overlay" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-      <a-assets>
+      <a-assets timeout="60000">
         <a-asset-item id="bap-p2" src="img/page2-01.glb"></a-asset-item>
         <a-asset-item id="bap-p3" src="img/page3-01.glb"></a-asset-item>
         <a-asset-item id="bap-p4" src="img/page4-01.glb"></a-asset-item>
