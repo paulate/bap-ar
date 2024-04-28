@@ -114,6 +114,11 @@ document.addEventListener("DOMContentLoaded", () => {
       createModel(entity, model.getAttribute("src"));
     });
   });
+      // Add click event listener
+      foundOverlay.addEventListener('click', () => {
+        // Redirect to index.html
+        window.location.href = redirectUrl;
+      });
 
   function createModel(parent, src) {
     let newModel = document.createElement("a-gltf-model");
