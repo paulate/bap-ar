@@ -97,6 +97,27 @@ document.addEventListener("DOMContentLoaded", () => {
     p13: "v",
   };
 
+  /**
+   *  Defines the scale value for each new model added to the scene.
+   *
+   *  TODO: These values are duplicated in the HTML document, they correspond
+   *  to the scale values of the a-entity elements.
+   **/
+  const entitySrcToScale = {
+    "#bap-p2": "2 2 2",
+    "#bap-p3": "2 2 2",
+    "#bap-p4": "2 2 2",
+    "#bap-p5": "2 2 2",
+    "#bap-p6": "2 2 2",
+    "#bap-p7": "2 2 2",
+    "#bap-p8": "2 2 2",
+    "#bap-p9": "2.55 2.55 2.55",
+    "#bap-p10": "2.55 2.55 2.55",
+    "#bap-p11": "2.55 2.55 2.55",
+    "#bap-p12": "2.55 2.55 2.55",
+    "#bap-p13": "2.55 2.55 2.55",
+  };
+
   entities.forEach((entity) => {
     entity.addEventListener("targetFound", (event) => {
       console.log("target found");
@@ -126,17 +147,12 @@ document.addEventListener("DOMContentLoaded", () => {
     newModel.setAttribute("rotation", "0 0 0");
     newModel.setAttribute("position", "0 0 0");
 
-    // Get targetIndex from parent entity
-    let targetIndex = parseInt(
-      parent.getAttribute("mindar-image-target").split(":")[1].trim(),
-    );
-
-    // Set scale based on targetIndex
-    if (targetIndex >= 7 && targetIndex <= 11) {
-      newModel.setAttribute("scale", "2.55 2.55 2.55");
-    } else if (targetIndex >= 1 && targetIndex <= 6) {
-      newModel.setAttribute("scale", "2 2 2");
+    // Set scale based on lookup table
+    const scale = entitySrcToScale[src];
+    if (scale === undefined) {
+      throw new Error("Scale not found for src: " + src);
     }
+    newModel.setAttribute("scale", scale);
 
     newModel.setAttribute("src", src);
     newModel.setAttribute(
