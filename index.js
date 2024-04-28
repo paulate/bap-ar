@@ -1,27 +1,12 @@
-//const assets = [
-//{ url: "img/page2-01.glb", id: "bap-p2" },
-//{ url: "img/page3-01.glb", id: "bap-p3" },
-//{ url: "img/page4-01.glb", id: "bap-p4" },
-//{ url: "img/page5-01.glb", id: "bap-p5" },
-//{ url: "img/page6-01.glb", id: "bap-p6" },
-//{ url: "img/page7-01.glb", id: "bap-p7" },
-//{ url: "img/page8-01.glb", id: "bap-p8" },
-//{ url: "img/page9-01.glb", id: "bap-p9" },
-//{ url: "img/page10-01.glb", id: "bap-p10" },
-//{ url: "img/page11-01.glb", id: "bap-p11" },
-//{ url: "img/page12-01.glb", id: "bap-p12" },
-//{ url: "img/page13-01.glb", id: "bap-p13" }
-//];
-
-const createAssetLoadingStatus = (id) => ({ id, loaded: false });
+const createAssetLoadingStatus = (id) => ({ id, loaded: false, progress: 0 });
 
 const handleLoadingProgress = (state) => {
-  const numAssetsLoaded = Object.values(state.assetLoadingStatusById).filter(
-    (status) => status.loaded,
-  ).length;
+  const assetLoadedPerc = Object.values(state.assetLoadingStatusById).map(
+    (status) => (status.loaded ? 1.0 : status.progress),
+  ).reduce((a, b) => a + b, 0);
   const totalNumAssets = Object.values(state.assetLoadingStatusById).length;
 
-  const progress = numAssetsLoaded / totalNumAssets;
+  const progress = assetLoadedPerc / totalNumAssets;
 
   // Display progress as text
   const progressElement = document.querySelector("p#loading-percentage");
@@ -48,6 +33,15 @@ const beginLoadingAssets = (state) => {
      **/
     assetElement.addEventListener("loaded", () => {
       state.assetLoadingStatusById[id].loaded = true;
+      handleLoadingProgress(state);
+    });
+
+    /**
+     * When the asset makes progress, update the progress value.
+     **/
+    assetElement.addEventListener("progress", (event) => {
+      state.assetLoadingStatusById[id].progress =
+        event.detail.loadedBytes / event.detail.totalBytes;
       handleLoadingProgress(state);
     });
   }
