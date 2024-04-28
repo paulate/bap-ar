@@ -1,14 +1,14 @@
 /**
  *  Creates an object to track the loading status of a single asset.
  **/
-const createAssetLoadingStatus = (id) => ({ id, loaded: false, progress: 0 });
+const createAssetLoadingStatus = (id) => ({ id, loaded: false });
 
 /**
  * Handles updating the gui when any asset makes loading progress.
  **/
 const handleLoadingProgress = (state) => {
   const assetLoadedPerc = Object.values(state.assetLoadingStatusById)
-    .map((status) => (status.loaded ? 1.0 : status.progress))
+    .map((status) => (status.loaded ? 1.0 : 0.0))
     .reduce((a, b) => a + b, 0);
   const totalNumAssets = state.totalNumAssets;
 
@@ -53,15 +53,6 @@ const startAssetLoadingGui = (state) => {
      **/
     assetElement.addEventListener("loaded", () => {
       state.assetLoadingStatusById[id].loaded = true;
-      handleLoadingProgress(state);
-    });
-
-    /**
-     * When the asset makes progress, update the progress value.
-     **/
-    assetElement.addEventListener("progress", (event) => {
-      state.assetLoadingStatusById[id].progress =
-        event.detail.loadedBytes / event.detail.totalBytes;
       handleLoadingProgress(state);
     });
   }
