@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     { url: "img/page12-01.glb", id: "bap-p12" },
     { url: "img/page13-01.glb", id: "bap-p13" },
   ];
-
   const foundOverlay = document.querySelector("#found-overlay");
   let entities = document.querySelectorAll("a-entity");
   let redirectUrl = "text.html";
