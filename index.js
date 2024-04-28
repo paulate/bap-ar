@@ -1,9 +1,9 @@
 const createAssetLoadingStatus = (id) => ({ id, loaded: false, progress: 0 });
 
 const handleLoadingProgress = (state) => {
-  const assetLoadedPerc = Object.values(state.assetLoadingStatusById).map(
-    (status) => (status.loaded ? 1.0 : status.progress),
-  ).reduce((a, b) => a + b, 0);
+  const assetLoadedPerc = Object.values(state.assetLoadingStatusById)
+    .map((status) => (status.loaded ? 1.0 : status.progress))
+    .reduce((a, b) => a + b, 0);
   const totalNumAssets = Object.values(state.assetLoadingStatusById).length;
 
   const progress = assetLoadedPerc / totalNumAssets;
@@ -11,6 +11,14 @@ const handleLoadingProgress = (state) => {
   // Display progress as text
   const progressElement = document.querySelector("p#loading-percentage");
   progressElement.innerText = `${Math.round(progress * 100)}%`;
+
+  /**
+   * When all assets are loaded, hide the loading screen.
+   */
+  if (progress === 1) {
+    const loadingScreen = document.querySelector("#loading-overlay");
+    loadingScreen.classList.add("hidden");
+  }
 };
 
 const beginLoadingAssets = (state) => {
