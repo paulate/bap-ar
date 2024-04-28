@@ -10,7 +10,7 @@ const handleLoadingProgress = (state) => {
   const assetLoadedPerc = Object.values(state.assetLoadingStatusById)
     .map((status) => (status.loaded ? 1.0 : status.progress))
     .reduce((a, b) => a + b, 0);
-  const totalNumAssets = Object.values(state.assetLoadingStatusById).length;
+  const totalNumAssets = state.totalNumAssets;
 
   const progress = assetLoadedPerc / totalNumAssets;
 
@@ -36,6 +36,9 @@ const startAssetLoadingGui = (state) => {
    *  Collects all a-frame asset items.
    **/
   const assetElements = document.querySelectorAll("a-asset-item");
+
+  // Calculates the total number of assets being loaded
+  state.totalNumAssets = assetElements.length;
 
   /**
    *  Loops over each a-frame asset item and creates a loading status object
@@ -69,7 +72,10 @@ const startAssetLoadingGui = (state) => {
  */
 document.addEventListener("DOMContentLoaded", () => {
   const state = {
+    // Stores the status of each asset by id.
     assetLoadingStatusById: {},
+    // Stores the total number of assets to load.
+    totalNumAssets: 1,
   };
   startAssetLoadingGui(state);
 
