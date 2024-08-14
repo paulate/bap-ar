@@ -8,14 +8,4 @@ TODOS
 
 ## Setup
 
-### macOS setup
-
-`brew install pango`
-
-_Note_: This may be required for `npm install` to succeed.
-
-### Install dependencies
-`npm install`
-
-## Running locally
-`npm run start`
+Refer to docs in Notion. 

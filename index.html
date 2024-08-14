@@ -144,63 +144,49 @@
       </div>
     </div>
     
-    <a-scene loading-screen="dotsColor: white" mindar-image="imageTargetSrc: targets/banners.mind;missTolerance: 10;uiScanning:#scanning-overlay" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-      <a-assets timeout="60000">
-        <a-asset-item id="bap-p2" src="img/page2-01.glb"></a-asset-item>
-        <a-asset-item id="bap-p3" src="img/page3-01.glb"></a-asset-item>
-        <a-asset-item id="bap-p4" src="img/page4-01.glb"></a-asset-item>
-        <a-asset-item id="bap-p5" src="img/page5-01.glb"></a-asset-item>
-        <a-asset-item id="bap-p6" src="img/page6-01.glb"></a-asset-item>
-        <a-asset-item id="bap-p7" src="img/page7-01.glb"></a-asset-item>
-        <a-asset-item id="bap-p8" src="img/page8-01.glb"></a-asset-item>
-        <a-asset-item id="bap-p9" src="img/page9-01.glb"></a-asset-item>
-        <a-asset-item id="bap-p10" src="img/page10-01.glb"></a-asset-item>
-        <a-asset-item id="bap-p11" src="img/page11-01.glb"></a-asset-item>
-        <a-asset-item id="bap-p12" src="img/page12-01.glb"></a-asset-item>
-        <a-asset-item id="bap-p13" src="img/page13-01.glb"></a-asset-item>
+   
+    <a-scene mindar-image="imageTargetSrc: targets/office-all.mind;missTolerance: 10;uiScanning:#scanning-overlay" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <a-assets>
+        <a-asset-item id="bap-p2" src="img/bap-p2_0201.gltf"></a-asset-item>
+        <a-asset-item id="bap-p3" src="img/bap-p3_0201-2.gltf"></a-asset-item>
+        <a-asset-item id="bap-p4" src="img/bap-p4_0201.gltf"></a-asset-item>
+        <a-asset-item id="bap-p5" src="img/bap-p5_0201.gltf"></a-asset-item>
+        <a-asset-item id="bap-p6" src="img/bap-p6_0201.gltf"></a-asset-item> 
+        <a-asset-item id="bap-p7" src="img/bap-p7_0201.gltf"></a-asset-item> 
+        <a-asset-item id="bap-p8" src="img/bap-p8_0201.gltf"></a-asset-item>
+        <a-asset-item id="bap-p9" src="img/bap-p9_0201.gltf"></a-asset-item>
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
       <a-entity light="type: ambient; color: #fff; intensity:3"></a-entity>
 
-      <a-entity mindar-image-target="targetIndex: 0"> 
-        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="2 2 2" src="#bap-p2" animation-mixer="loop:once;timeScale:0; clampWhenFinished: true;">
+      <a-entity mindar-image-target="targetIndex: 0"><!--page 2-->
+        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p2" animation-mixer="loop:once;timeScale:0">
       </a-entity>
-      <a-entity mindar-image-target="targetIndex: 1"> 
-        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="2 2 2" src="#bap-p3" animation-mixer="loop:once;timeScale:0; clampWhenFinished: true;">
+      <a-entity mindar-image-target="targetIndex: 1"><!--page 3-->
+        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p3" animation-mixer="loop:once;timeScale:0">
       </a-entity>
-      <a-entity mindar-image-target="targetIndex: 2"> 
-        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="2 2 2" src="#bap-p4" animation-mixer="loop:once;timeScale:0; clampWhenFinished: true;">
+      <a-entity mindar-image-target="targetIndex: 2"><!--page 4-->
+        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p4" animation-mixer="loop:once;timeScale:0">
       </a-entity>
-      <a-entity mindar-image-target="targetIndex: 3"> 
-        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="2 2 2" src="#bap-p5" animation-mixer="loop:once;timeScale:0; clampWhenFinished: true;">
+      <a-entity mindar-image-target="targetIndex: 3"><!--page 5-->
+        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p5" animation-mixer="loop:once;timeScale:0">
       </a-entity>
-      <a-entity mindar-image-target="targetIndex: 4"> 
-        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="2 2 2" src="#bap-p6" animation-mixer="loop:once;timeScale:0; clampWhenFinished: true;">
+      <a-entity mindar-image-target="targetIndex: 4"><!--page 6-->
+        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p6" animation-mixer="loop:once;timeScale:0">
       </a-entity>
-      <a-entity mindar-image-target="targetIndex: 5"> 
-        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="2 2 2" src="#bap-p7" animation-mixer="loop:once;timeScale:0; clampWhenFinished: true;">
+      <a-entity mindar-image-target="targetIndex: 5"><!--page 7-->
+        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p7" animation-mixer="loop:once;timeScale:0">
       </a-entity>
-      <a-entity mindar-image-target="targetIndex: 6"> 
-        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="2 2 2" src="#bap-p8" animation-mixer="loop:once;timeScale:0; clampWhenFinished: true;">
+      <a-entity mindar-image-target="targetIndex: 6"><!--page 8-->
+        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p8" animation-mixer="loop:once;timeScale:0">
       </a-entity>
-      <a-entity mindar-image-target="targetIndex: 7"> 
-        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="2.55 2.55 2.55" src="#bap-p9" animation-mixer="loop:once;timeScale:0; clampWhenFinished: true;">
+      <a-entity mindar-image-target="targetIndex: 7"> <!--page 9-->
+          <a-gltf-model rotation="0 0 0" position="0 0 0" scale="4.0 4.0 4.0" src="#bap-p9" animation-mixer="loop:once;timeScale:0">
       </a-entity>
-      <a-entity mindar-image-target="targetIndex: 8"> 
-        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="2.55 2.55 2.55" src="#bap-p10" animation-mixer="loop:once;timeScale:0; clampWhenFinished: true;">
-      </a-entity>
-      <a-entity mindar-image-target="targetIndex: 9"> 
-        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="2.55 2.55 2.55" src="#bap-p11" animation-mixer="loop:once;timeScale:0; clampWhenFinished: true;">
-      </a-entity>
-      <a-entity mindar-image-target="targetIndex: 10"> 
-        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="2.55 2.55 2.55" src="#bap-p12" animation-mixer="loop:once;timeScale:0; clampWhenFinished: true;">
-      </a-entity>
-      <a-entity mindar-image-target="targetIndex: 11"> 
-        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="2.55 2.55 2.55" src="#bap-p13" animation-mixer="loop:once;timeScale:0; clampWhenFinished: true;">
-      </a-entity>
-
+    
     </a-scene>
+
 
     <script src="index.js"></script>
   </body>
