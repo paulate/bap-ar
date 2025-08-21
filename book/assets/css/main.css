@@ -359,9 +359,9 @@ div.thumbnail:hover {
 }
 
 .thumbnail-size-sm div.thumbnail {
-    width: 11.1%;
-    height: 11.1%;
-    padding-bottom: 11.1%;
+    width: 20;
+    height: 20%;
+    padding-bottom: 20%;
 }
 
 .thumbnail-size-md div.thumbnail {
